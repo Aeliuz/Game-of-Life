@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Scenehandler : MonoBehaviour
 {
     public static bool custom_start = false;
-    public static bool easter_egg = false;
+    public static bool pattern_start = false;
 
     public void Simulate()
     {
-        easter_egg = false;
+        pattern_start = false;
         custom_start = false;
         SceneManager.LoadScene("SampleScene");
         
@@ -19,7 +19,7 @@ public class Scenehandler : MonoBehaviour
 
     public void custom() 
     {
-        easter_egg = false;
+        pattern_start = false;
         custom_start = true;
         SceneManager.LoadScene("SampleScene");
     }
@@ -33,7 +33,7 @@ public class Scenehandler : MonoBehaviour
     public void Easter_egg()
     {
         custom_start = false;
-        easter_egg = true;
+        pattern_start = true;
         SceneManager.LoadScene("SampleScene");
     }
 }

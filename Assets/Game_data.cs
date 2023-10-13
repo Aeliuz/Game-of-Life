@@ -49,7 +49,7 @@ public class Game_data : MonoBehaviour
             if (stable_check)
                 gen_til_stable.text = "Generations until stable: " + stable_gen.ToString();
             else
-                gen_til_stable.text = " ";
+                gen_til_stable.text = "Generations until stable: ";
 
         }
     }

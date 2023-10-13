@@ -70,7 +70,7 @@ public class GameOfLife : MonoBehaviour
                 cells[x, y] = newCell.GetComponent<Cell>();
 
                 //Random check to see if it should be alive
-                if (Random.Range(0, 100) < DataHandler.fillRate && Scenehandler.custom_start == false && Scenehandler.easter_egg == false)
+                if (Random.Range(0, 100) < DataHandler.fillRate && Scenehandler.custom_start == false && Scenehandler.pattern_start == false)
                 {
                     cells[x, y].alive = true;
                 }
@@ -84,7 +84,7 @@ public class GameOfLife : MonoBehaviour
             }
         }
 
-        if (Scenehandler.easter_egg == true)
+        if (Scenehandler.pattern_start == true)
         {
             cells[numberOfColums / 2 - 3, numberOfRows / 2].alive = true;
             cells[numberOfColums / 2 - 4, numberOfRows / 2].alive = true;
