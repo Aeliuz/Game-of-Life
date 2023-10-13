@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +18,22 @@ public class GameOfLife : MonoBehaviour
     float cellSize = 1f; //Size of our cells
     int numberOfColums, numberOfRows;
     int spawnChancePercentage = 57;
-
+    int last_generation = -1;
+    int generation_before_last = -5;
+    public int generations = 0;
+    public int big_cells = 0;
     bool pause = false;
+    public bool stable = false;
+
+    public static GameOfLife Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
 
     void Start()
     {
@@ -185,6 +200,24 @@ public class GameOfLife : MonoBehaviour
             }
         }
 
+
+
+        void Check_if_stable()
+        {
+            if (big_cells == last_generation && big_cells == generation_before_last) 
+                stable = true;
+            else 
+                stable = false;
+        }
+
+        Check_if_stable();
+
+        Debug.Log(stable);
+
+        generation_before_last = last_generation;
+        last_generation = big_cells;
+        big_cells = 0;
+        generations++;
     }
 
     int Check_Neighbours(int cellX, int cellY)
@@ -224,6 +257,5 @@ public class GameOfLife : MonoBehaviour
         }
 
         return neighbours;
-
     }
 }

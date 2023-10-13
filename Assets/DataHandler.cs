@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class DataHandler : MonoBehaviour
 {
     public static int fillRate = 50;
@@ -12,8 +13,12 @@ public class DataHandler : MonoBehaviour
     public TextMeshProUGUI spawn_rate_text;
     public TextMeshProUGUI camera_size_text;
 
+    public Toggle toggle;
+
     public Slider fillRateUI;
     public Slider cameraSizeUI;
+
+    public static bool toggle_ui;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +42,10 @@ public class DataHandler : MonoBehaviour
     public void ValueChangeCheck2()
     {
         cameraSize = (int)cameraSizeUI.value;
+    }
+
+    public void ValueChangeCheckUI()
+    {
+        Game_data.ui_enabled = toggle.isOn;
     }
 }

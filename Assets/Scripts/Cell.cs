@@ -35,6 +35,11 @@ public class Cell : MonoBehaviour
 
     public void UpdateStatus()
     {
+        if (spriteRenderer.sprite == alive_cell)
+        {
+            GameOfLife.Instance.big_cells++;
+        }
+
         if (alive && next_state_alive)
         {
             spriteRenderer.enabled = alive;
